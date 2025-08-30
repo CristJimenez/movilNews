@@ -20,6 +20,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  public onLogin() {}
+
   public initForm() {
     this.email = new FormControl('', [Validators.email, Validators.required]);
     this.password = new FormControl('', [Validators.minLength(4), Validators.required]);

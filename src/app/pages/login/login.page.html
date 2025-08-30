@@ -1,39 +1,46 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+  <ion-text>imagen</ion-text>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <form 
   [formGroup]="loginForm"
+  (ngSubmit)="onLogin()"
   >
     <ion-card-content>
       <ion-row>
         <ion-col>
-          <ion-input
+          <app-input
           type="email"
           label="email"
-          labelPlacement="floating"          
-          ></ion-input>
+          placeholder="jane@doe.com"
+          [control]="email"     
+          ></app-input>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-input
+          <app-input
           type="password"
           label="password"
-          labelPlacement="floating"          
-          ></ion-input>
+          placeholder="***********"
+          [control]="password"        
+          ></app-input>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button
+          <a [routerLink]="['/register']">Create an account</a>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <app-button
           type="submit"
           color="success"
           [disabled]="loginForm.invalid"
-          ></ion-button>
+          value="Login"
+          ></app-button>
         </ion-col>
       </ion-row>
     </ion-card-content>
