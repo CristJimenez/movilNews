@@ -5,4 +5,11 @@
 labelPlacement="stacked"
 fill="solid"
 (keyup)="onType($event)"  
-></ion-input>
+>
+@if (type === 'password') {
+    <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+}
+</ion-input>
+@if (hasError) {
+    <ion-text color="danger">Input invalid</ion-text>
+}

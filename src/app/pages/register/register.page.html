@@ -1,12 +1,7 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <form 
-  
+  [formGroup]="registerForm"
+  (ngSubmit)="doRegister()"
   >
     <ion-card-content>
       <ion-row>
@@ -14,7 +9,8 @@
           <app-input
           type="text"
           label="Name"
-          placeholder="Jane"  
+          placeholder="Jane"
+          [control]="name"
           ></app-input>
         </ion-col>
         <ion-col>
@@ -22,6 +18,7 @@
           type="text"
           label="Last name"
           placeholder="Doe"
+          [control]="lastName"
           ></app-input>
         </ion-col>
       </ion-row>
@@ -30,7 +27,8 @@
           <app-input
           type="email"
           label="Email"
-          placeholder="jane@doe.com"  
+          placeholder="jane@doe.com"
+          [control]="email"
           ></app-input>
         </ion-col>
       </ion-row>
@@ -39,7 +37,8 @@
           <app-input
           type="password"
           label="Password"
-          placeholder="***********"  
+          placeholder="***********"
+          [control]="password" 
           ></app-input>
         </ion-col>
       </ion-row>
@@ -48,7 +47,8 @@
           <app-input
           type="password"
           label="Confirm password"
-          placeholder="***********"  
+          placeholder="***********"
+          [control]="confirmPassword"
           ></app-input>
         </ion-col>
       </ion-row>
@@ -63,6 +63,7 @@
           type="submit"
           color="primary"
           value="Register"
+          [disabled]="registerForm.invalid"
           ></app-button>
         </ion-col>
       </ion-row>
