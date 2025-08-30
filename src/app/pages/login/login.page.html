@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form 
+  [formGroup]="loginForm"
+  >
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <ion-input
+          type="email"
+          label="email"
+          labelPlacement="floating"          
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input
+          type="password"
+          label="password"
+          labelPlacement="floating"          
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button
+          type="submit"
+          color="success"
+          [disabled]="loginForm.invalid"
+          ></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </form>
+  <ion-card>
+  </ion-card>
+</ion-content>
