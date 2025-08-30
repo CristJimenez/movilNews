@@ -1,0 +1,7 @@
+{
+  "name": "movilNews",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
