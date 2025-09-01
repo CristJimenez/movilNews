@@ -22,6 +22,23 @@
           ></app-input>
         </ion-col>
       </ion-row>
+      <!--<ion-row>
+        <ion-col>
+            <app-select
+            label="Country"
+            placeholder="Select your country"
+            interface="popover"
+            [control]="country"
+            >
+              <ion-select-option
+              *ngFor="let c of countries?.data"
+              [value]="{id: c.name, value: c.unicodeFlag + ' ' + c.name }"
+              >
+                {{ c.name }}
+              </ion-select-option>
+            </app-select>
+        </ion-col>
+      </ion-row>!-->
       <ion-row>
         <ion-col>
           <app-input

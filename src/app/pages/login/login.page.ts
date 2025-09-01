@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CONSTANTS } from 'src/app/constants/constants';
 import { IUser } from 'src/app/interfaces/user.interface';
-import { Storage } from 'src/app/shared/services/storage/storage';
+import { Storage } from 'src/app/shared/providers/storage/storage';
 
 @Component({
   selector: 'app-login',
@@ -27,13 +28,19 @@ export class LoginPage implements OnInit {
   }
 
   public onLogin() {
-    const users = this.storageSrv.get<IUser[]>('users') || [];
+    console.log(this.loginForm.value);
+    const users = this.storageSrv.get<IUser[]>(CONSTANTS.USERS) || [];
 
     const user = users.find(u => u.email === this.email.value);
     if(!user) throw new Error('The user dont exist');
 
     const validPassword = user.password === this.password.value;
-    if(validPassword) return this.router.navigate(['/home']); 
+    if(validPassword) {
+      this.storageSrv.set(CONSTANTS.AUTH, {
+        id: user.id,
+      })
+      return this.router.navigate(['/home']);
+    } 
     throw new Error('Password missmatch');
   }
 
