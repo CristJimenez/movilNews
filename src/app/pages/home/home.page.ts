@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { InfiniteScrollCustomEvent, MenuController, RefresherCustomEvent } from '@ionic/angular';
+import { MenuController, ModalController, RefresherCustomEvent } from '@ionic/angular';
 import { Article, INews } from 'src/app/interfaces/news.interface';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { Loader } from 'src/app/shared/providers/loader/loader';
 import { News } from 'src/app/shared/services/news/news';
 
@@ -19,6 +20,7 @@ export class HomePage implements OnInit {
     private newsSrv: News,
     private loaderProv: Loader,
     private menuCtrl: MenuController,
+    private modalCtrl: ModalController
   ) {}
 
   async ngOnInit() {
@@ -47,6 +49,14 @@ export class HomePage implements OnInit {
   async refresh(event: RefresherCustomEvent) {
     await this.getArticles();
     event.target.complete();
+  }
+
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: ModalComponent,
+    });
+    modal.present();
+    await modal.onWillDismiss();
   }
 
 }

@@ -15,9 +15,11 @@ import { RouterModule } from '@angular/router';
 import { ListComponent } from './components/list/list.component';
 import { Loader } from './providers/loader/loader';
 import { HeaderComponent } from './components/header/header.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 const modules = [ IonicModule, ReactiveFormsModule, FormsModule, RouterModule ]
-const components = [ InputComponent, ButtonComponent, SelectComponent, CardComponent, LinkComponent, ListComponent, HeaderComponent ]
+const components = [ InputComponent, ButtonComponent, SelectComponent, 
+  CardComponent, LinkComponent, ListComponent, HeaderComponent, ModalComponent ]
 const services = [ Storage, Toast, Http, News, Loader ]
 
 @NgModule({
