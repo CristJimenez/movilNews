@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CONSTANTS } from 'src/app/constants/constants';
 import { IUser } from 'src/app/interfaces/user.interface';
 import { Storage } from 'src/app/shared/providers/storage/storage';
+import { Toast } from 'src/app/shared/providers/toast/toast';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     private readonly storageSrv: Storage,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly toastProv: Toast,
   ) {
     this.initForm();
   }
@@ -27,12 +29,19 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  public onLogin() {
+  public async onLogin() {
     console.log(this.loginForm.value);
     const users = this.storageSrv.get<IUser[]>(CONSTANTS.USERS) || [];
 
     const user = users.find(u => u.email === this.email.value);
-    if(!user) throw new Error('The user dont exist');
+    if(!user) {
+      await this.toastProv.present({
+        message: 'The user does not exist',
+        position: 'bottom',
+        color: 'danger',
+      });
+      return;
+    }
 
     const validPassword = user.password === this.password.value;
     if(validPassword) {
@@ -40,8 +49,13 @@ export class LoginPage implements OnInit {
         id: user.id,
       })
       return this.router.navigate(['/home']);
-    } 
-    throw new Error('Password missmatch');
+    }
+    await this.toastProv.present({
+      message: 'Password missmatch',
+      position: 'bottom',
+      color: 'danger',
+    });
+    return;
   }
 
   public initForm() {

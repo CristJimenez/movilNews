@@ -9,6 +9,7 @@
           <ion-col>
             <app-input
             type="email"
+            id="email"
             label="Email"
             placeholder="jane@doe.com"
             [control]="email"     
@@ -19,6 +20,7 @@
           <ion-col>
             <app-input
             type="password"
+            id="password"
             label="Password"
             placeholder="***********"
             [control]="password"        
@@ -27,7 +29,10 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <a [routerLink]="['/register']">Create an account</a>
+            <app-link
+            link="/register"
+            value="Don't have an account?"
+            ></app-link>
           </ion-col>
         </ion-row>
         <ion-row>

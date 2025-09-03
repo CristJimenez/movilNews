@@ -14,6 +14,7 @@ export class InputComponent  implements OnInit {
 
   @Input() type: InputType = 'text';
   @Input() label: string = '';
+  @Input() id: string = '';
   @Input() placeholder: string = '';
   @Input() control: FormControl = new FormControl();
 

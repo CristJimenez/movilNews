@@ -17,5 +17,13 @@ export class Storage {
 
     return JSON.parse(data) as T;
   }
+
+  remove(key: string): void {
+    localStorage.removeItem(key);
+  }
+
+  update<T>(key: string, data: Partial<T>): void {
+    localStorage.setItem(key, JSON.stringify({...this.get<T>(key), ...data}));
+  }
   
 }

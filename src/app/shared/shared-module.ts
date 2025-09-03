@@ -9,10 +9,16 @@ import { Toast } from './providers/toast/toast';
 import { Http } from './providers/http/http';
 import { SelectComponent } from './components/select/select.component';
 import { CardComponent } from './components/card/card.component';
+import { News } from './services/news/news';
+import { LinkComponent } from './components/link/link.component';
+import { RouterModule } from '@angular/router';
+import { ListComponent } from './components/list/list.component';
+import { Loader } from './providers/loader/loader';
+import { HeaderComponent } from './components/header/header.component';
 
-const modules = [ IonicModule, ReactiveFormsModule, FormsModule ]
-const components = [ InputComponent, ButtonComponent, SelectComponent, CardComponent ]
-const services = [ Storage, Toast, Http ]
+const modules = [ IonicModule, ReactiveFormsModule, FormsModule, RouterModule ]
+const components = [ InputComponent, ButtonComponent, SelectComponent, CardComponent, LinkComponent, ListComponent, HeaderComponent ]
+const services = [ Storage, Toast, Http, News, Loader ]
 
 @NgModule({
   declarations: [ ...components ],

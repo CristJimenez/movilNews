@@ -1,0 +1,9 @@
+<ion-list
+lines="none"
+>
+  @for (item of items; track $index) {
+    <ion-item (click)="valueItem(item)">
+      <ion-label>{{ item }}</ion-label>
+    </ion-item>
+  }
+</ion-list>

@@ -8,6 +8,7 @@
         <ion-col>
           <app-input
           type="text"
+          id="name"
           label="Name"
           placeholder="Jane"
           [control]="name"
@@ -16,13 +17,14 @@
         <ion-col>
           <app-input
           type="text"
+          id="lastName"
           label="Last name"
           placeholder="Doe"
           [control]="lastName"
           ></app-input>
         </ion-col>
       </ion-row>
-      <!--<ion-row>
+      <ion-row>
         <ion-col>
             <app-select
             label="Country"
@@ -30,19 +32,20 @@
             interface="popover"
             [control]="country"
             >
-              <ion-select-option
-              *ngFor="let c of countries?.data"
-              [value]="{id: c.name, value: c.unicodeFlag + ' ' + c.name }"
+            @for (item of countries.data; track $index) {
+              <ion-select-option [value]="{id: item.name, value: item.unicodeFlag + ' ' + item.name }"
               >
-                {{ c.name }}
+                {{ item.unicodeFlag }} {{ item.name }}
               </ion-select-option>
+            }
             </app-select>
         </ion-col>
-      </ion-row>!-->
+      </ion-row>
       <ion-row>
         <ion-col>
           <app-input
           type="email"
+          id="email"
           label="Email"
           placeholder="jane@doe.com"
           [control]="email"
@@ -53,6 +56,7 @@
         <ion-col>
           <app-input
           type="password"
+          id="password"
           label="Password"
           placeholder="***********"
           [control]="password" 
@@ -63,6 +67,7 @@
         <ion-col>
           <app-input
           type="password"
+          id="confirmPassword"
           label="Confirm password"
           placeholder="***********"
           [control]="confirmPassword"
@@ -71,7 +76,10 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <a [routerLink]="['/login']">Already registered?</a>
+          <app-link
+          link="/login"
+          value="Already registered?"
+          ></app-link>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -79,8 +87,8 @@
           <app-button
           type="submit"
           color="primary"
-          value="Register"
           [disabled]="registerForm.invalid"
+          value="Register"
           ></app-button>
         </ion-col>
       </ion-row>
